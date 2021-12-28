@@ -9,7 +9,6 @@ screen = t.Screen()
 brush = t.Turtle()
 
 START = 0
-
 before = 0
 
 def wait():
@@ -29,15 +28,12 @@ def init():
     brush.speed(0)
     brush.pu()
     brush.color("#FFD700", "#FFD700")
-
     screen.title("Happy New Year")
-
     playsound("JoyToTheWorld.mp3", False)
     START = time()
     before = START
 
     screen.tracer(0, 0)
-
     scene1()
 
 def scene1():
@@ -67,7 +63,7 @@ def scene1():
     brush.goto(773, -5)
     brush.write("Year", align = "center", font = newYear)
     wait()
-    scene2()
+    scene3()
 
 def drawFunction(org, fin, iteration, f, fInterval, force = 1):
     start = min(org[0], fin[0])
@@ -122,144 +118,6 @@ def star(length, fill = True):
         brush.rt(72)
         brush.fd(length)
     brush.end_fill()
-        
-
-def scene2():
-    global screen, brush, timeStamp, before
-
-    brush.clear()
-    brush.ht()
-    brush.speed(0)
-    screen.bgcolor("#FFFFFF")
-
-    brush.color("#009900", "#008000")
-
-    wait()
-    
-    brush.goto(512, 600)
-    brush.pensize(5)
-
-    brush.dot()
-    brush.begin_fill()
-
-    Iteration = 100
-
-    X, Y = drawFunction([512, 600], [448, 450], Iteration, lambda x : sinh(x), [0, 1])
-    iterationXY(X, Y, Iteration)
-    finalRail = [[], []]
-    for idx in range(len(X)):
-        finalRail[0].append(1024 - X[idx])
-        finalRail[1].append(Y[idx])
-    wait()
-    X, Y = drawFunction([448, 450], [480, 465], Iteration, lambda x : cosh(x), [0, 1])
-    iterationXY(X, Y, Iteration)
-    wait()
-    tmp2 = [1024 - X[0], Y[0]]
-    tmp = [1024 - X[-1], Y[-1]]
-    X, Y = drawFunction([X[-1], Y[-1]], [320, 200], Iteration, lambda x : sinh(x), [0, 1])
-    iterationXY(X, Y, Iteration)
-    wait()
-    X, Y = drawFunction([320, 200], [512, 180], Iteration, lambda x : cosh(x), [-1, 0])
-    iterationXY(X, Y, Iteration)
-    X, Y = drawFunction([X[-1], Y[-1]], [704, 200], Iteration, lambda x : cosh(x), [0, 1])
-    iterationXY(X, Y, Iteration)
-    wait()
-    get = Y[-1]
-    X, Y = drawFunction([X[-1], Y[-1]], tmp, Iteration, lambda x : sinh(x), [0, 1])
-    force = Y[0] - get
-    for idx in range(len(Y)):
-        Y[idx] -= force
-    iterationXY(X[::-1], Y, Iteration)
-    wait()
-    X, Y = drawFunction(tmp2, tmp, Iteration, lambda x : cosh(x), [-1, 0])
-    iterationXY(X, Y, Iteration)
-    wait()
-    iterationXY(finalRail[0], finalRail[1], Iteration)
-    wait()
-    brush.end_fill()
-    screen.update()
-    wait()
-    brush.pu()
-    screen.bgcolor("#000000")
-    wait()
-    wait()
-    wait()
-    wait()
-    brush.goto(512, 0)
-    brush.color("#FFD700", "#FFD700")
-    brush.write("Happy New Year", align = "center", font = ("Snowballs", 100, "normal"))
-    wait()
-    brush.goto(320, 200)
-    brush.pd()
-    brush.pensize(10)
-    brush.color("#B29700", "#B29700")
-    brush.goto((tmp[0] + 704) / 2, (tmp[1] + 200) / 2)
-    brush.pu()
-    brush.goto(400, (tmp[1] + 200) / 2)
-    brush.pd()
-    brush.goto(560, 430)
-    brush.pu()
-    brush.goto(448, 450)
-    brush.pd()
-    brush.goto(540, 530)
-    screen.update()
-    wait()
-    brush.color("#DF0000", "#FF0000")
-    decoration(360, 220)
-    decoration(580, 290)
-    decoration(510, 380)
-    decoration(470, 456)
-    decoration(530, 524)
-    screen.update()
-    wait()
-    brush.color("#00DF00", "#00FF00")
-    decoration(400, 230)
-    decoration(530, 270)
-    decoration(450, 360)
-    decoration(510, 480)
-    decoration(540, 520)
-    screen.update()
-    wait()
-    brush.color("#B29700", "#FFD700")
-    decoration(440, 245)
-    decoration(380, 218)
-    decoration(535, 275)
-    decoration(480, 380)
-    decoration(510, 260)
-    decoration(530, 410)
-    screen.update()
-    wait()
-    brush.pu()
-    brush.goto(512, 750)
-    brush.lt(108)
-    star(100)
-    screen.update()
-    wait()
-    brush.pu()
-    brush.goto(200, 420)
-    brush.lt(120)
-    star(80)
-    screen.update()
-    wait()
-    brush.pu()
-    brush.goto(120, 250)
-    brush.lt(120)
-    star(60)
-    screen.update()
-    wait()
-    brush.pu()
-    brush.goto(520, 450)
-    brush.lt(120)
-    star(120)
-    screen.update()
-    wait()
-    brush.pu()
-    brush.goto(700, 500)
-    brush.lt(120)
-    star(250)
-    screen.update()
-    wait()
-    scene3()
 
 def scene3():
     global brush, screen
@@ -340,13 +198,13 @@ def scene4():
     brush.write("202", align="center", font=("Snowballs",200,"normal"))
     wait()
     brush.clear()
-    brush.write("2020", align="center", font=("Snowballs",200,"normal"))
+    brush.write("2022", align="center", font=("Snowballs",200,"normal"))
     wait()
     brush.clear()
-    brush.write("2020☆", align="center", font=("Snowballs",200,"normal"))
+    brush.write("2022☆", align="center", font=("Snowballs",200,"normal"))
     wait()
     brush.clear()
-    brush.write("2020★", align="center", font=("Snowballs",200,"normal"))
+    brush.write("2022★", align="center", font=("Snowballs",200,"normal"))
     wait()
     screen.setup(1024, 600, 25, 25)
     wait()
@@ -458,14 +316,14 @@ def scene5():
     brush.write("2", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     brush.goto(819.2, 320)
-    brush.write("0", align = "center", font = ("Snowballs", 150, "normal"))
+    brush.write("2", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     brush.color("#000000", "#000000")
     brush.goto(409.6, 250)
     brush.write("0", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     brush.goto(819.2, 320)
-    brush.write("0", align = "center", font = ("Snowballs", 150, "normal"))
+    brush.write("2", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     brush.goto(204.8, 350)
     brush.write("2", align = "center", font = ("Snowballs", 150, "normal"))
@@ -478,7 +336,7 @@ def scene5():
     brush.write("0", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     brush.goto(819.2, 320)
-    brush.write("0", align = "center", font = ("Snowballs", 150, "normal"))
+    brush.write("2", align = "center", font = ("Snowballs", 150, "normal"))
     wait()
     screen.setup(1024, 600, 500, 75)
     wait()
@@ -528,10 +386,10 @@ def finale():
     brush.goto(512, 160)
     brush.pu()
     brush.color("#FFD700", "#FFD700")
-    brush.write("Happy New Year!", align = "center", font = ("Snowballs", 150, "normal"))
+    brush.write("Zakariyan Coding Society!", align = "center", font = ("Snowballs", 95, "normal"))
     brush.color("#B29700", "#B29700")
     brush.goto(515, 157)
-    brush.write("Happy New Year!", align = "center", font = ("Snowballs", 150, "normal"))
+    brush.write("Zakariyan Coding Society!", align = "center", font = ("Snowballs", 95, "normal"))
     screen.update()
     screen.onclick(end)
 
@@ -540,6 +398,7 @@ def end(x, y):
     brush.clear()
     screen.bye()
     print("Thanks For Watching!")
+    print('Credit goes to "Bucket1572"')
     sleep(3)
     quit()
     
